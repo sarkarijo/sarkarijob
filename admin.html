@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SarkariMitra Admin Panel</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fa-solid fa-users-cog fa-3x"></i>
+                <h2>SarkariMitra Admin</h2>
+                <p>Secure Post Management</p>
+            </div>
+
+            <div class="login-body">
+                <div class="input-group">
+                    <label for="admin-password"><i class="fa-solid fa-lock"></i> Master Password</label>
+                    <input type="password" id="admin-password" placeholder="Enter secure password">
+                </div>
+                <div id="login-error" class="error-msg"></div>
+                <button id="login-btn" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Admin
+                    Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Screen -->
+    <div id="admin-screen" class="screen">
+        <nav class="admin-nav">
+            <div class="nav-brand">
+                <i class="fa-solid fa-shield-halved"></i> <span>SarkariMitra Admin</span>
+            </div>
+            <div class="nav-actions">
+                <span id="auto-save-status"><i class="fa-solid fa-cloud"></i> All changes saved</span>
+                <button id="logout-btn" class="btn btn-danger btn-sm"><i class="fa-solid fa-power-off"></i>
+                    Logout</button>
+            </div>
+        </nav>
+
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>Generate New Job Post</h1>
+                <p>Fill in the details below to automatically generate an SEO-friendly HTML post.</p>
+            </div>
+
+            <form id="post-generator-form">
+
+                <!-- Section 1 - Basic Info -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-info-circle"></i> Section 1: Basic Information</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="postTitle">Post Title <span class="required">*</span></label>
+                            <input type="text" id="postTitle" required placeholder="e.g. SSC CGL 2026 Recruitment">
+                        </div>
+                        <div class="input-group">
+                            <label for="organization">Organization Name <span class="required">*</span></label>
+                            <input type="text" id="organization" required placeholder="e.g. Staff Selection Commission">
+                        </div>
+                        <div class="input-group">
+                            <label for="postName">Post Name / Designation <span class="required">*</span></label>
+                            <input type="text" id="postName" required placeholder="e.g. Combined Graduate Level">
+                        </div>
+                        <div class="input-group">
+                            <label for="totalVacancy">Total Vacancy <span class="required">*</span></label>
+                            <input type="text" id="totalVacancy" required placeholder="e.g. 17727 or Various">
+                        </div>
+                        <div class="input-group">
+                            <label for="jobLocation">Job Location</label>
+                            <input type="text" id="jobLocation" placeholder="e.g. All India or UP">
+                        </div>
+                        <div class="input-group">
+                            <label for="jobCategory">Job Category</label>
+                            <select id="jobCategory">
+                                <option value="Central Govt">Central Govt</option>
+                                <option value="State Govt">State Govt</option>
+                                <option value="Railway">Railway</option>
+                                <option value="Bank">Bank</option>
+                                <option value="Defence/Police">Defence/Police</option>
+                                <option value="Teaching">Teaching</option>
+                                <option value="Medical">Medical</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 - Important Dates -->
+                <div class="form-section">
+                    <h3><i class="fa-regular fa-calendar-alt"></i> Section 2: Important Dates</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="notificationDate">Notification Date <span class="required">*</span></label>
+                            <input type="text" id="notificationDate" required placeholder="e.g. 10 March 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="applyStartDate">Apply Start Date <span class="required">*</span></label>
+                            <input type="text" id="applyStartDate" required placeholder="e.g. 15 March 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="applyLastDate">Apply Last Date <span class="required">*</span></label>
+                            <input type="text" id="applyLastDate" required placeholder="e.g. 14 April 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="feeLastDate">Fee Payment Last Date</label>
+                            <input type="text" id="feeLastDate" placeholder="e.g. 16 April 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="correctionDate">Form Correction Date</label>
+                            <input type="text" id="correctionDate" placeholder="e.g. 20-22 April 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="examDate">Exam Date</label>
+                            <input type="text" id="examDate" placeholder="e.g. June 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="admitCardDate">Admit Card Date</label>
+                            <input type="text" id="admitCardDate" placeholder="e.g. Available Soon">
+                        </div>
+                        <div class="input-group">
+                            <label for="resultDate">Result Date</label>
+                            <input type="text" id="resultDate" placeholder="e.g. Notified Later">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3 - Eligibility -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Section 3: Eligibility</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="ageLimit">Age Limit</label>
+                            <input type="text" id="ageLimit" placeholder="e.g. 18-27 Years as on 01/01/2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="ageRelaxation">Age Relaxation</label>
+                            <input type="text" id="ageRelaxation" placeholder="e.g. OBC: 3 Yrs, SC/ST: 5 Yrs">
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="qualification">Education Qualification <span class="required">*</span></label>
+                            <textarea id="qualification" required rows="2"
+                                placeholder="e.g. Bachelor's Degree in any stream from a recognized university."></textarea>
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="experience">Experience Required</label>
+                            <input type="text" id="experience" placeholder="e.g. Fresher (No Experience)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4 - Application Fee -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-indian-rupee-sign"></i> Section 4: Application Fee</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="genFee">General / OBC / EWS Fee</label>
+                            <input type="text" id="genFee" placeholder="e.g. 100/-">
+                        </div>
+                        <div class="input-group">
+                            <label for="scFee">SC / ST / PH Fee</label>
+                            <input type="text" id="scFee" placeholder="e.g. 0/- (Exempted)">
+                        </div>
+                        <div class="input-group">
+                            <label for="femaleFee">All Category Female Fee</label>
+                            <input type="text" id="femaleFee" placeholder="e.g. 0/-">
+                        </div>
+                        <div class="input-group">
+                            <label>Payment Mode</label>
+                            <div class="checkbox-group" id="paymentModes">
+                                <label><input type="checkbox" value="Online (Debit/Credit Card)"> Online Card</label>
+                                <label><input type="checkbox" value="Net Banking"> Net Banking</label>
+                                <label><input type="checkbox" value="UPI"> UPI</label>
+                                <label><input type="checkbox" value="SBI Challan"> SBI Challan</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 - Salary -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-wallet"></i> Section 5: Salary & Type</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="payScale">Salary / Pay Scale</label>
+                            <input type="text" id="payScale" placeholder="e.g. Pay Level 4 (Rs. 25500 - 81100)">
+                        </div>
+                        <div class="input-group">
+                            <label>Job Type</label>
+                            <div class="radio-group" id="jobType">
+                                <label><input type="radio" name="job_type" value="Permanent" checked> Permanent</label>
+                                <label><input type="radio" name="job_type" value="Contractual"> Contractual</label>
+                                <label><input type="radio" name="job_type" value="Temporary"> Temporary</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6 - Links -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-link"></i> Section 6: Important Links</h3>
+                    <div class="form-grid">
+                        <div class="input-group full-width">
+                            <label for="applyLink">Apply Online Link <span class="required">*</span></label>
+                            <input type="url" id="applyLink" required placeholder="https://...">
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="notificationLink">Official Notification PDF Link <span
+                                    class="required">*</span></label>
+                            <input type="url" id="notificationLink" required placeholder="https://...">
+                        </div>
+                        <div class="input-group">
+                            <label for="websiteLink">Official Website</label>
+                            <input type="url" id="websiteLink" placeholder="https://...">
+                        </div>
+                        <div class="input-group">
+                            <label for="syllabusLink">Syllabus Link</label>
+                            <input type="url" id="syllabusLink" placeholder="Leave blank if none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7 - Content -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-file-lines"></i> Section 7: Content & Details</h3>
+                    <div class="form-grid">
+                        <div class="input-group full-width">
+                            <label for="shortDesc">Short Description <span class="required">*</span></label>
+                            <textarea id="shortDesc" required rows="3"
+                                placeholder="2-3 lines summarized for the top of the page."></textarea>
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="selectionProcess">Selection Process</label>
+                            <input type="text" id="selectionProcess"
+                                placeholder="e.g. Tier-1 CBT > Tier-2 CBT > Document Verification">
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="howToApply">How to Apply (Steps)</label>
+                            <textarea id="howToApply" rows="4"
+                                placeholder="Step 1: Visit website...\nStep 2: Register...\nStep 3: Upload documents..."></textarea>
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="fullArticle">Full Article (Optional HTML/Rich Text)</label>
+                            <textarea id="fullArticle" rows="5"
+                                placeholder="Add any extra paragraphs, <ul> lists, or <strong> tags here if needed."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8 - SEO Settings -->
+                <div class="form-section">
+                    <h3><i class="fa-solid fa-search"></i> Section 8: SEO Settings</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="seoTitle">SEO Title (<span id="titleCount">0</span>/60)</label>
+                            <input type="text" id="seoTitle" maxlength="65">
+                        </div>
+                        <div class="input-group">
+                            <label for="focusKeyword">Focus Keyword</label>
+                            <input type="text" id="focusKeyword" placeholder="e.g. SSC CGL 2026">
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="metaDesc">Meta Description (<span id="descCount">0</span>/160)</label>
+                            <textarea id="metaDesc" rows="2" maxlength="160"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="tags">Tags (Comma separated)</label>
+                            <input type="text" id="tags" placeholder="SSC, CGL, Graduate Jobs, 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="fileName">Output File Name (.html)</label>
+                            <input type="text" id="fileName" placeholder="e.g. ssc-cgl-2026.html">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="button" id="clear-form-btn" class="btn btn-outline">Clear Draft</button>
+                    <div class="primary-actions">
+                        <button type="button" id="preview-btn" class="btn btn-secondary"><i class="fa-solid fa-eye"></i>
+                            Preview Post</button>
+                        <button type="submit" id="download-btn" class="btn btn-primary"><i
+                                class="fa-solid fa-download"></i> Generate & Download HTML</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-laptop-code"></i> Live Preview</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe id="preview-frame"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="post-generator.js"></script>
+</body>
+
+</html>
