@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==================== SarkariMitra AI V3 ====================
 
     // Helper: Base URL setup
-    const SITE_URL = "https://sarkarijo.github.io/sarkajiob";
+    const SITE_URL = "https://sarkarijo.github.io/sarkarijob";
     const indexURL = SITE_URL + '/index.html';
 
     function getPostLink(fileName) {
@@ -370,33 +370,54 @@ document.addEventListener("DOMContentLoaded", () => {
             let catMatch = isAdmitIntent ? 'admit' : (isResultIntent ? 'answer' : 'latest');
             if (isResultIntent && sitePosts.some(p => p.category.includes('result'))) catMatch = 'result';
 
-            let specificMatch = sitePosts.find(p => cleanMsg.split(' ').some(w => w.length > 3 && p.title.toLowerCase().includes(w)));
+            // Better search: Find all posts where the title contains the exact phrase or all significant words
+            let searchWords = cleanMsg.split(' ').filter(w => w.length > 2 && !['hai', 'kya', 'batao', 'dikhaye'].includes(w));
+            let specificMatches = sitePosts.filter(p => {
+                let titleObj = p.title.toLowerCase();
+                return titleObj.includes(cleanMsg) || searchWords.every(w => titleObj.includes(w));
+            });
 
-            if (specificMatch) {
+            if (specificMatches.length > 0) {
                 let icon = isAdmitIntent ? '🎉' : '🔥';
-                return await verifyLinkAndShow(specificMatch.url, specificMatch.title, `${specificMatch.title} aa gaya hai! ${icon}<br>`);
+                let responseText = `Mujhe mil gaya! ${icon}<br><br>`;
+                // Show top 3 matches
+                for (let i = 0; i < Math.min(3, specificMatches.length); i++) {
+                    responseText += await verifyLinkAndShow(specificMatches[i].url, specificMatches[i].title, "") + "<br>";
+                }
+                return responseText;
             } else {
                 let genericCatPosts = sitePosts.filter(p => p.category.includes(catMatch));
                 if (genericCatPosts.length > 0) {
                     let ans = "Bilkul! Yeh dekho abhi available hain:<br>";
-                    for (let i = 0; i < Math.min(3, genericCatPosts.length); i++) {
-                        ans += `- ${genericCatPosts[i].title}<br>`;
-                    }
-                    ans += await verifyLinkAndShow(genericCatPosts[0].url, "Saari Latest Jobs Dekho", "");
+                    genericCatPosts.slice(0, 3).forEach(p => { ans += `- ${p.title}<br>`; });
+                    ans += await verifyLinkAndShow(SITE_URL, "Saari Latest Jobs Dekho", "<br>");
                     return ans + "Kaunsi field mein interest hai?";
                 }
             }
         }
 
-        const exactMatch = sitePosts.find(p => cleanMsg.split(' ').some(w => w.length > 3 && p.title.toLowerCase().includes(w)));
-        if (exactMatch) {
-            let preText = "Mujhe aapki bharti mil gayi! 🔍<br>";
-            if (isAgeIntent) preText += "Age limit detail post mein di gayi hai. ";
-            if (isFeeIntent) preText += "Fees ki jankari post mein hai. ";
-            if (isDateIntent) preText += "Important dates yahan check karein: ";
-            if (isApplyIntent) preText += "Apply karne ka process yahan hai: ";
+        // Better fallback keyword search if no intent mapped or no specific intent matches 
+        let fallbackWords = cleanMsg.split(' ').filter(w => w.length > 1 && !['hai', 'kya', 'batao', 'dikhaye', 'mujhe', 'chahiye'].includes(w));
 
-            return await verifyLinkAndShow(exactMatch.url, exactMatch.title, preText);
+        if (fallbackWords.length > 0) {
+            let specificMatches = sitePosts.filter(p => {
+                let titleObj = p.title.toLowerCase();
+                return titleObj.includes(cleanMsg) || fallbackWords.every(w => titleObj.includes(w)) || fallbackWords.some(w => titleObj.includes(w) && w.length > 3);
+            });
+
+            if (specificMatches.length > 0) {
+                let preText = "Mujhe aapki bharti mil gayi! 🔍<br>";
+                if (isAgeIntent) preText += "Age limit detail post mein di gayi hai. ";
+                if (isFeeIntent) preText += "Fees ki jankari post mein hai. ";
+                if (isDateIntent) preText += "Important dates yahan check karein: ";
+                if (isApplyIntent) preText += "Apply karne ka process yahan hai: ";
+
+                let responseText = preText + "<br>";
+                for (let i = 0; i < Math.min(3, specificMatches.length); i++) {
+                    responseText += await verifyLinkAndShow(specificMatches[i].url, specificMatches[i].title, "") + "<br>";
+                }
+                return responseText;
+            }
         }
 
         return null;
