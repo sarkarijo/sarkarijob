@@ -1,0 +1,482 @@
+/* assets/css/sarkari-master.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap');
+
+:root {
+    /* Site Global Colors */
+    --primary-bg: #0d1b2a;
+    /* Dark navy — page background & header */
+    --header-bg: #0d1b2a;
+    --nav-bg: #0d1b2a;
+    --nav-active: #f5a623;
+    /* Gold/orange — active nav item underline */
+    --site-title-color: #ffffff;
+    /* White */
+    --site-tagline-color: #f5a623;
+    /* Gold */
+
+    /* Post/Article Colors */
+    --post-title-bg: #0d1b2a;
+    /* Dark navy title box */
+    --post-title-color: #ffffff;
+    --post-title-border: #f5a623;
+    /* Gold border on title box */
+
+    /* Section Header (Important Dates, Fee, Vacancy etc.) */
+    --section-header-bg: #8b1a1a;
+    /* Dark maroon/red */
+    --section-header-color: #ffffff;
+
+    /* Data Tables */
+    --table-row-odd: #ffffff;
+    --table-row-even: #fffde7;
+    /* Light yellow alternating */
+    --table-border: #dddddd;
+
+    /* Important Links Table */
+    --links-table-bg: #fff091;
+    /* Yellow bg */
+    --links-table-text: #000000;
+    /* Black label */
+    --links-table-link: #0000ff;
+    /* Blue link text */
+
+    /* Badges */
+    --badge-new: #4caf50;
+    /* Green — NEW */
+    --badge-out: #e53935;
+    /* Red — OUT */
+    --badge-soon: #f57c00;
+    /* Orange — Coming Soon */
+
+    /* Description Box */
+    --desc-box-border-left: #f5a623;
+    /* Gold left border */
+    --desc-box-bg: #f9f9f9;
+
+    /* Body Text */
+    --body-bg: #f4f6f8;
+    /* Light grey page background */
+    --body-text: #222222;
+}
+
+/* Base Typo */
+body {
+    font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif !important;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--body-text);
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-bg);
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+h5 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Utility Classes */
+.d-none {
+    display: none !important;
+}
+
+/* POST TITLE BOX */
+.post-title-box {
+    background-color: var(--post-title-bg);
+    border: 2px solid var(--post-title-border);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.post-title {
+    color: var(--post-title-color) !important;
+    margin: 0 !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #aaaaaa;
+    margin-top: 5px;
+    display: block;
+}
+
+/* DESCRIPTION BOX */
+.desc-box {
+    border-left: 4px solid var(--desc-box-border-left);
+    background: var(--desc-box-bg);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #000;
+}
+
+/* SOCIAL FOLLOW BUTTONS */
+.social-follow-box {
+    margin: 20px 0;
+}
+
+.social-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.social-table td {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.social-label {
+    font-weight: 700;
+    color: #e91e8c;
+    /* Pink */
+    font-size: 15px;
+    width: 60%;
+    text-align: left !important;
+}
+
+.social-link {
+    text-align: center;
+}
+
+.follow-btn {
+    background: #1565c0;
+    color: white;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.follow-btn:hover {
+    background: #0d47a1;
+    color: white;
+}
+
+.whatsapp-btn {
+    background: #25d366;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe57;
+    color: white;
+}
+
+.telegram-btn {
+    background: #0088cc;
+}
+
+.telegram-btn:hover {
+    background: #006699;
+    color: white;
+}
+
+.social-table a {
+    text-decoration: none;
+}
+
+/* DATA TABLES (Important Dates, Vacancy, etc.) */
+.section-header {
+    background-color: var(--section-header-bg);
+    color: var(--section-header-color);
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #777;
+    border-bottom: none;
+    margin-top: 20px;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #000;
+    background-color: #fff;
+}
+
+.info-table td,
+.info-table th {
+    border: 1px solid #777;
+    padding: 9px 12px;
+}
+
+.info-table th {
+    background: var(--section-header-bg);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+
+.info-table tr:nth-child(odd) {
+    background: var(--table-row-odd);
+}
+
+.info-table tr:nth-child(even) {
+    background: var(--table-row-even);
+}
+
+/* IMPORTANT LINKS TABLE */
+.links-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.links-table td {
+    border: 1px solid #777;
+    padding: 12px 14px;
+    background-color: var(--links-table-bg);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.links-table .link-label {
+    color: var(--links-table-text);
+    text-align: left;
+}
+
+.links-table .link-cell a {
+    color: var(--links-table-link);
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+.links-table .link-cell a:hover {
+    color: var(--section-header-bg);
+}
+
+/* BADGES */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.badge-new {
+    background: var(--badge-new);
+    animation: pulse 1.5s infinite alternate;
+}
+
+.badge-out {
+    background: var(--badge-out);
+}
+
+.badge-soon {
+    background: var(--badge-soon);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* LANGUAGE TOGGLE BUTTON */
+.lang-toggle-btn {
+    background: var(--post-title-bg);
+    color: white;
+    border: 2px solid var(--nav-active);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.lang-toggle-btn:hover {
+    background: var(--nav-active);
+    color: var(--primary-bg);
+}
+
+/* STICKY LINKS BUTTON */
+.sticky-links-btn {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--section-header-bg);
+    color: white;
+    writing-mode: vertical-rl;
+    padding: 15px 8px;
+    border-radius: 6px 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sticky-links-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.sticky-links-btn:hover {
+    background: #d32f2f;
+}
+
+/* FAQ ACCORDION */
+.faq-container {
+    margin-bottom: 25px;
+}
+
+.faq-item {
+    border: 1px solid #777;
+    margin-bottom: 5px;
+    background: #fff;
+}
+
+.faq-question {
+    background-color: var(--primary-bg);
+    color: #fff;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq-answer {
+    background-color: #f4f6f9;
+    padding: 15px;
+    display: none;
+    font-size: 15px;
+    color: #000;
+}
+
+.faq-question.active+.faq-answer {
+    display: block;
+}
+
+.faq-question:hover {
+    background-color: #152238;
+}
+
+/* CHECKLIST BOX (For Admit Card / Steps) */
+.checklist-box {
+    background-color: #fff8e1;
+    border: 2px solid #ffb300;
+    padding: 15px;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.checklist-box h3 {
+    color: #e65100;
+    margin-top: 0;
+    border-bottom: 1px solid #ffe082;
+    padding-bottom: 5px;
+}
+
+.checklist-box ul,
+.checklist-box ol {
+    padding-left: 20px;
+    margin: 10px 0 0 0;
+}
+
+.checklist-box li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+
+    .info-table td,
+    .info-table th {
+        font-size: 13px !important;
+        padding: 7px 5px !important;
+    }
+
+    .links-table td {
+        font-size: 14px !important;
+        padding: 8px !important;
+    }
+
+    .links-table .link-cell a {
+        font-size: 14px !important;
+    }
+
+    .post-title {
+        font-size: 18px !important;
+    }
+
+    .social-table td {
+        display: block;
+        width: 100%;
+        text-align: center !important;
+    }
+
+    .social-label {
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 8px;
+        border-bottom: none;
+    }
+
+    .sticky-links-btn {
+        font-size: 12px;
+        padding: 12px 6px;
+    }
+
+    .section-header {
+        font-size: 15px;
+    }
+
+    .post-title-box {
+        padding: 12px 15px;
+    }
+
+    .sidebar {
+        margin-top: 30px;
+    }
+}
